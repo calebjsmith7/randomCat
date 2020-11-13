@@ -14,7 +14,7 @@ class App extends Component {
     async componentDidMount(){
       const url = "https://aws.random.cat/meow";
       const response = await fetch(url);
-      const data = response.json();
+      const data = await response.json();
       this.setState({
         loading: false,
         cat: data.file
@@ -27,7 +27,7 @@ class App extends Component {
       <p>Random Cat Photos</p>
       <div>{this.state.loading || !this.state.cat ?
         <div>loading...</div> :
-      <img src={this.state.cat} /> }
+      <img className="photo" src={this.state.cat} /> }
       </div>
       </div>
     )
